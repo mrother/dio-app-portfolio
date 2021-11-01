@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="br.com.dio.app.repositories.presentation.ui.home.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/vaiDeHomeFragment_para_DetailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="br.com.dio.app.repositories.presentation.ui.user.UserFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/vaiDeLoginFragment_para_HomeFragment"
+            app:destination="@id/homeFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="user"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue=" " />
+    </fragment>
+    <action
+        android:id="@+id/action_global_loginFragment"
+        app:destination="@id/loginFragment"
+        app:launchSingleTop="false"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="br.com.dio.app.repositories.presentation.ui.detail.DetailFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="repoName"
+            app:argType="string" />
+        <argument
+            android:name="owner"
+            app:argType="string" />
+    </fragment>
+</navigation>

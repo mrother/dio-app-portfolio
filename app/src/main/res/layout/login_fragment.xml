@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="user"
+            type="br.com.dio.app.repositories.data.model.User" />
+        <variable
+            name="viewModel"
+            type="br.com.dio.app.repositories.presentation.ui.user.UserViewModel" />
+        <variable
+            name="navController"
+            type="androidx.navigation.NavController" />
+        <import type="android.view.View"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ui.user.UserFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/loginCloseBtn"
+                android:layout_width="@dimen/material_btn_dimension"
+                android:layout_height="@dimen/material_btn_dimension"
+                android:background="?attr/actionBarItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_close"
+                android:visibility="@{user == null ? View.INVISIBLE : View.VISIBLE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/design_default_color_on_primary" />
+
+            <ImageView
+                android:id="@+id/loginAvatarIv"
+                android:layout_width="@dimen/avatar_bigger"
+                android:layout_height="112dp"
+                android:layout_marginTop="@dimen/margin"
+                userAvatarIv="@{user}"
+                tools:src="@drawable/ic__avatar_placeholder"
+                android:background="@drawable/bg_circle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/loginCloseBtn"
+                />
+
+            <TextView
+                android:id="@+id/loginUsernameTv"
+                style="@style/UserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                userNameLogin="@{user}"
+                android:textAlignment="center"
+                tools:text="@string/welcome"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/loginAvatarIv" />
+
+            <TextView
+                android:id="@+id/loginInfoTv"
+                style="@style/UserInfo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/one_and_half_margin"
+                android:layout_marginEnd="@dimen/one_and_half_margin"
+                userInfoLogin="@{user}"
+                tools:text="@string/login_info_placeholder"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/loginUsernameTv" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/loginUsernameInput"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/one_and_half_margin"
+                android:layout_marginStart="@dimen/one_and_half_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/loginInfoTv"
+                app:layout_constraintVertical_bias="0.13">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/loginUsernameEdt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/username_hint" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/loginBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_submit"
+                app:backgroundTint="?attr/colorSecondary"
+                android:textColor="?attr/colorOnSecondary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/loginUsernameInput" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </FrameLayout>
+</layout>

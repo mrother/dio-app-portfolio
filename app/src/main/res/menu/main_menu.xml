@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/action_sort_date"
+        android:title="Ordenar por data"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/action_sort_name"
+        android:title="Ordenar por nome"
+        app:showAsAction="never"
+        />
+<!--    Eliminei o ícone desse menu temporariamente... -->
+     <item
+        android:id="@+id/action_change_user"
+        android:title="@string/action_change_user"
+        app:showAsAction="never"
+        />
+</menu>
